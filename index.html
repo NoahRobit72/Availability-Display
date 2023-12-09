@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clickable Boxes</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #boxContainer {
+            display: flex; /* Use flexbox for horizontal layout */
+            flex-direction: column; /* Change to vertical layout */
+            gap: 5px; /* Add some space between the boxes */
+        }
+
+        .box {
+            width: 50px;
+            height: 50px;
+            background-color: lightgray;
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+
+        .clicked {
+            background-color: lightblue;
+        }
+        #submitBtn {
+            margin-top: 20px;
+            margin: auto; /* Center the button horizontally */
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="boxContainer">
+    <div id="box1" class="box" onclick="toggleBox('box1')"></div>
+    <div id="box2" class="box" onclick="toggleBox('box2')"></div>
+    <div id="box3" class="box" onclick="toggleBox('box3')"></div>
+    <div id="box4" class="box" onclick="toggleBox('box4')"></div>
+    <div id="box5" class="box" onclick="toggleBox('box5')"></div>
+    <button id="submitBtn" onclick="submitBoxStatus()">Submit</button>
+
+</div>
+
+
+<script>
+    // Object to store the status of each box
+    var boxStatus = {};
+
+    // Function to toggle the clicked status of a box
+    function toggleBox(boxId) {
+        var box = document.getElementById(boxId);
+        boxStatus[boxId] = !boxStatus[boxId]; // Toggle the status
+        box.classList.toggle('clicked', boxStatus[boxId]); // Add or remove the 'clicked' class
+    }
+
+    // Function to submit the box status to the console
+    function submitBoxStatus() {
+        console.log(boxStatus);
+    }
+</script>
+
+</body>
+</html>
+
